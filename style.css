@@ -13,3 +13,11 @@ header ul {
 ul li a, .white {
     color: #fff !important;
 }
+#load{
+    height: 2em;
+    visibility: hidden;
+}
+#show{
+    height: 2em;
+    
+}

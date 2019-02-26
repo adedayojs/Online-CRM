@@ -7,9 +7,8 @@
       "email": "samfeolu@gmail.com",
       "phone": "08066069526",
       "id": "2",
-      "addedBy":"1"
+      "addedBy": "1"
     }
-    
   ],
   "staff": [
     {
@@ -18,26 +17,32 @@
       "gender": "Male",
       "email": "samfeolu@gmail.com",
       "phone": "08066069526",
-      "password":"default",
+      "password": "default",
       "id": "1"
     },
     {
-        "firstname": "Solomon",
-        "lastname": "Decadead",
-        "gender": "Male",
-        "email": "Solomon@gmail.com",
-        "phone": "08066069526",
-        "password":"default",
-        "id": "2"
-      }
-    
-  ],
-  
-  "product":[
-    {
-        "name":"",
-        "quantity":"",
-        "price":""
+      "firstname": "Solomon",
+      "lastname": "Decadead",
+      "gender": "Male",
+      "email": "Solomon@gmail.com",
+      "phone": "08066069526",
+      "password": "default",
+      "id": "2"
     }
-]
+  ],
+  "product": [
+    {
+      "name": "Tecno",
+      "quantity": 3,
+      "costPrice": 20000,
+      "sellingPrice": 30000,
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ]
 }

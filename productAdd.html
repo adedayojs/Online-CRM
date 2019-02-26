@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to Jquery</title>
+    <title>Online CRM | Add New Product</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 
@@ -13,7 +13,7 @@
 <body>
     <header>
             <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand white" href="#">CRM</a>
+                    <a class="navbar-brand white" href="index.html">CRM</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
@@ -27,7 +27,7 @@
                             <a class="nav-link" href="about.html">About</a>
                           </li>
                           <li class="nav-item pl-5">
-                            <a class="nav-link" href="login.html">Login</a>
+                            <a class="nav-link" href="logout.html">Logout</a>
                             </li>
                           <li class="nav-item pl-5">
                             <a class="nav-link" href="faq.html">FAQ</a>
@@ -50,22 +50,30 @@
             </div>
 
             <div class="col-md-4 border border-success rounded p-2">
-                    <form id="login">
-                        <p class="text-center text-uppercase h5">Login</p>
+                    <form id="addProduct">
+                        <p class="text-center text-uppercase h5">Add New Product</p>
                             <div class="form-group">
-                              <label for="exampleInputEmail1">Staff Id</label>
-                              <input type="text" class="form-control " id="staffId" aria-describedby="emailHelp" placeholder="Enter Your ID" required>
-                              <small id="emailHelp" class="form-text text-muted">Login with your ID</small>
+                              <label for="addProductName">Product Name</label>
+                              <input type="text" class="form-control " id="addProductName" placeholder="Enter Product Name" required>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="pword" placeholder="Password" required>
+                              <label for="addQuantity">Product Initial Quantity</label>
+                              <input type="number" class="form-control" id="addQuantity" placeholder="Enter Initial Quantity" required>
                             </div>
-                            <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="checkbox">
-                              <label class="form-check-label" for="exampleCheck1">I am a Human</label>
+                            <div class="form-group">
+                                <label for="addCostPrice">Product Cost Price</label>
+                                <input type="number" class="form-control" id="addCostPrice" placeholder="Enter Cost Price" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group">
+                                <label for="addSellingPrice">Product Selling Price </label>
+                                <input type="number" class="form-control" id="addSellingPrice" placeholder="Enter Selling Price" required>
+                            </div>
+                            <div class="row">
+                              <div class="col-1"></div>
+                              <div class="col-3"><button type="submit" class="btn btn-success">Submit</button></div>
+                              <div class="col-8" id="load"><img id="" height="20em" src="load.gif"/><span class="small">Please Wait while your product is being added</span></div>
+                            </div>
+                            
                     </form>
             </div>
 
