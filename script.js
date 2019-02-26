@@ -22,9 +22,10 @@ $(document).ready(
 )
 
 $(document).ready(
+    
     $("#login").submit(function(event){
         event.preventDefault();
-        
+       
         if ( $("#staffId").val() && $("#pword").val()) {
         
             $.ajax({
@@ -34,11 +35,14 @@ $(document).ready(
             })
             .done(function(res){
                 if(res.length===0){
-                    alert('No match');
+                    alert('Wrong Id or Password');
+                    $("#staffId").addClass('border-danger');
+                    $("#emailHelp").val('')
                 }
                 else{
                     console.log(res)
-                    document.cookie = `staffId=${res[0].id}`
+                    window.location = 'index.html'
+                    document.cookie = `staffId=${res[0].id}, Firstname=${res[0].firstname}, Lastname=${res[0].lastname}`
                 }
                     //else{alert('There is a problem')}
                 
