@@ -1,0 +1,41 @@
+{
+  "user": [
+    {
+      "firstname": "Adedayo",
+      "lastname": "Adedunye",
+      "gender": "Male",
+      "email": "samfeolu@gmail.com",
+      "phone": "08066069526",
+      "id": "2",
+      "addedBy":"1"
+    }
+    
+  ],
+  "staff": [
+    {
+      "firstname": "Adedayo",
+      "lastname": "Adedunye",
+      "gender": "Male",
+      "email": "samfeolu@gmail.com",
+      "phone": "08066069526",
+      "password":"default",
+      "id": "1"
+    },
+    {
+        "firstname": "Solomon",
+        "lastname": "Decadead",
+        "gender": "Male",
+        "email": "Solomon@gmail.com",
+        "phone": "08066069526",
+        "password":"default",
+        "id": "2"
+      }
+    
+  ],
+  
+  "product":[
+    {
+        "name":""
+    }
+]
+}
