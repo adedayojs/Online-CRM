@@ -1,4 +1,10 @@
 {
+    "admin": [
+        {
+          "id": "admin1234",
+          "password": "12345"
+        }
+      ],
   "user": [
     {
       "firstname": "Adedayo",

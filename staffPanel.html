@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Online CRM | Product Opereations</title>
+    <title>Online CRM | Home</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 
     <script>
-        let adminId = window.localStorage.getItem('adminId');
-        if(!(adminId)){
-            alert('Please Login With Admin ID');
-            window.location.href = 'admin_login.html';
+        let userId = window.localStorage.getItem('staffId');
+        if(!(userId)){
+            alert('Please Login');
+            window.location.href = 'login.html';
         }
     </script>
 </head>
@@ -51,49 +52,49 @@
     <div class="container">
         <br/>
         <div class="row">
-            <p id="welcomeMesssage" class="text-right h3">
-            Welcome, Here You can perform various operation which concerns your various products
+          <center>
+            <p id="welcomeMessage" class="h1">
+            
           </p>
+        </center>
         </div>
         <div class="row">
+          
+          <div class="col-md-2"></div>
             <div class="col-md-4">
-              <a href="productAdd.html">
+              <a href="customerOperations.html">
                 <div class="border border-success rounded p-2 m-1">
-                <h3 class="bg-light text-center text-success">Create New Product</h3>
-                <img class="" height="250em" width="250em" src="img/addProduct.png"/>
-              </div>
-            </a>
-                
+                  <h3 class="bg-light text-center">Customer Operations</h3>
+                  <img class="" height="250em" width="250em" src="img/customer.png"/>
+                </div>
+              </a>
             </div>
-
+            
             <div class="col-md-4">
-              <a href="productUpdate.html">
+              <a href="sales.html">
                 <div class="border border-success rounded p-2 m-1">
-                <h3 class="bg-light text-center text-success">Update Existing Product</h3>
-                <img class="" height="250em" width="250em" src="img/updateProduct.png"/>
-              </div>
-            </a>
-                
+                  <h3 class="bg-light text-center">Make Sale</h3>
+                  <img class="" height="250em" width="250em" src="img/product.png"/>
+                </div>
+              </a>
             </div>
+            <div class="col-md-2"></div>
 
-            <div class="col-md-4">
-            <a href="productDelete.html">
-              <div class="border border-success rounded p-2 m-1">
-              <h3 class="bg-light text-center text-success">Delete Existing Product</h3>
-              <img class="" height="250em" width="250em" src="img/deleteProduct.png"/>
-            </div>
-          </a>
-              
-          </div>
+            
         </div>
 
       
         <br/>
         
+
         </div>
     </div>
     
 </body>
+<script>
+let x =document.getElementById('welcomeMessage');
+ x.innerText = "Welcome " + window.localStorage.getItem('name');
+</script>
 <script src="jquery-3.3.1.js"></script>
 <script src="script.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>

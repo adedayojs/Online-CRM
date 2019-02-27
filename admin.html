@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Online CRM | Product Opereations</title>
+    <title>Online CRM | Home</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-
     <script>
         let adminId = window.localStorage.getItem('adminId');
         if(!(adminId)){
-            alert('Please Login With Admin ID');
+            alert('Please Login');
             window.location.href = 'admin_login.html';
         }
     </script>
+    
 </head>
 <body>
     <header>
@@ -51,36 +51,36 @@
     <div class="container">
         <br/>
         <div class="row">
-            <p id="welcomeMesssage" class="text-right h3">
-            Welcome, Here You can perform various operation which concerns your various products
+          <p id="welcomeMesssage" class="text-right h1">
+            Welcome Admin
           </p>
         </div>
         <div class="row">
             <div class="col-md-4">
-              <a href="productAdd.html">
+                <a href="transactions.html">
+                  <div class="border border-success rounded p-2 m-1">
+                  <h3 class="bg-light text-center">View Transactions</h3>
+                  <img class="" height="250em" width="250em" src="img/invoice-icon.png"/>
+                </div>
+              </a>
+                  
+              </div>
+
+            <div class="col-md-4">
+              <a href="staffOperations.html">
                 <div class="border border-success rounded p-2 m-1">
-                <h3 class="bg-light text-center text-success">Create New Product</h3>
-                <img class="" height="250em" width="250em" src="img/addProduct.png"/>
+                <h3 class="bg-light text-center">Staff Operations</h3>
+                <img class="" height="250em" width="250em" src="img/staff.png"/>
               </div>
             </a>
                 
             </div>
 
             <div class="col-md-4">
-              <a href="productUpdate.html">
-                <div class="border border-success rounded p-2 m-1">
-                <h3 class="bg-light text-center text-success">Update Existing Product</h3>
-                <img class="" height="250em" width="250em" src="img/updateProduct.png"/>
-              </div>
-            </a>
-                
-            </div>
-
-            <div class="col-md-4">
-            <a href="productDelete.html">
+            <a href="productOperations.html">
               <div class="border border-success rounded p-2 m-1">
-              <h3 class="bg-light text-center text-success">Delete Existing Product</h3>
-              <img class="" height="250em" width="250em" src="img/deleteProduct.png"/>
+              <h3 class="bg-light text-center">Product Operations</h3>
+              <img class="" height="250em" width="250em" src="img/product.png"/>
             </div>
           </a>
               
@@ -89,7 +89,16 @@
 
       
         <br/>
-        
+        <div class="row">
+            <div class="col-md-4">
+              
+                
+            </div>
+
+            
+            
+        </div>
+
         </div>
     </div>
     

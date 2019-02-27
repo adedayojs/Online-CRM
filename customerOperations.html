@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 
-    
+    <script>
+        let staffId = window.localStorage.getItem('staffId');
+        if(!(staffId)){
+            alert('Please Login With Staff ID');
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -45,13 +51,14 @@
     <div class="container">
         <br/>
         <div class="row">
-          <p id="welcomeMesssage" class="text-right h1">
+          <p id="welcomeMessage" class="text-right h1">
             Welcome Admin
           </p>
         </div>
         <div class="row">
+          <div class="col-md-2"></div>
             <div class="col-md-4">
-              <a href="customerAdd.html">
+              <a href="add_new_customer.html">
                 <div class="border border-success rounded p-2 m-1">
                 <h3 class="bg-light text-center">Add Customer</h3>
                 <img class="" height="250em" width="250em" src="img/adduser.png"/>
@@ -63,22 +70,15 @@
             <div class="col-md-4">
               <a href="customerUpdate.html">
                 <div class="border border-success rounded p-2 m-1">
-                <h3 class="bg-light text-center">Update Customer Detail</h3>
+                <h3 class="bg-light text-center">View Customer</h3>
                 <img class="" height="250em" width="250em" src="img/editCustomer.png"/>
               </div>
             </a>
                 
             </div>
+            <div class="col-md-2"></div>
 
-            <div class="col-md-4">
-            <a href="customerDelete.html">
-              <div class="border border-success rounded p-2 m-1">
-              <h3 class="bg-light text-center">Delete Customer</h3>
-              <img class="" height="250em" width="250em" src="img/deleteCustomer.png"/>
-            </div>
-          </a>
-              
-          </div>
+            
         </div>
 
       
@@ -89,6 +89,10 @@
     </div>
     
 </body>
+<script>
+    let x =document.getElementById('welcomeMessage');
+     x.innerText = "Welcome " + window.localStorage.getItem('name');
+    </script>
 <script src="jquery-3.3.1.js"></script>
 <script src="script.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>

@@ -7,7 +7,13 @@
     <title>Online CRM | Staff Operations</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
-
+    <script>
+        let adminId = window.localStorage.getItem('adminId');
+        if(!(adminId)){
+            alert('Please Login With Admin Details');
+            window.location.href = 'admin_login.html';
+        }
+    </script>
     
 </head>
 <body>
@@ -51,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-              <a href="staffAdd.html">
+              <a href="add_new_user.html">
                 <div class="border border-success rounded p-2 m-1">
                 <h3 class="bg-light text-center">Create Non-Existing Staff Profile</h3>
                 <img class="" height="250em" width="250em" src="img/addStaff.png"/>
