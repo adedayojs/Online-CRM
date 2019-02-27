@@ -60,8 +60,8 @@ $(document).ready(
             $.ajax({
                 method:"GET",
                 url: `http://localhost:3000/product?name=${$("#addProductName").val()}`
-            }).done(
-
+            })
+            .done(
                 function(res){
                     if(res.length === 0){
                         $.ajax({
@@ -75,19 +75,34 @@ $(document).ready(
                             }
                         })
                         .done(
-                            //console.log('Your Product Was Successfully Added')
+                            function(e){
+                            alert('Your Product Was Successfully Added');
                             window.location='productOperations.html'
+                            }
                         )
-                        .fail(alert('Sorry Something Went Wrong'))
+                        .fail(
+                            function(){
+                                alert('Sorry Something Went Wrong')
+                            }
+                        )
                     }
                     else{
                         alert('Sorry Product Exist')
+                        window.location = 'productAdd.html'
                     }
                 }
-            ).fail(
+            )
+            .fail(
+                function(e){
                 alert('Error Validating From Server')
+                }
             )
             
         }
     )
+)
+
+// Product Deletion Script
+$(document).ready(
+    
 )
