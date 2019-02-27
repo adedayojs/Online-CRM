@@ -51,48 +51,65 @@
     <div class="container">
         <br/>
         <div class="row">
-            <div class="col-md-8 p-2 pr-5 text-justify">
-                <p>
-                    From the stables of <em>Impact Field Consult</em>, comes this programm which is designed for basically teachers and school owners likewise, to help in a goal we call <strong>LET THEM LEARN</strong>. The need is on the rise for teachers and tutors which will not only take up jobs as teachers, but see it as a point of contact to sow into the lives of the future leaders. Many Teachers and tutors have risen without knowing the real motives and driving force that makes a teacher a teacher, same goes for many school that have sprung up without baic knowledge and technical and educational know how of the educational sector.
-                </p>
-                <p>
-                    This amongst many other challenges have brought one of the most brilliant mind thinking in a direction which is aiming to correct these challenges in the educational sector. <strong>LET THEM LEARN 2019</strong> will leave you in a posotive state of dismapisma which we are definitely sure to produce results that were never concieved achievably possible. I Sign Out
-                </p>
-            </div>
-
-            <div class="col-md-4 border border-success rounded p-2">
+          <div class="col-md-1"></div>
+          <div class="col-md-4 border border-success rounded p-2">
               
-                    <form id="registrationForm">
-                        <p class="text-center text-uppercase h5">Registration</p>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Firstname</label>
-                              <input type="text" class="form-control" id="firstname" placeholder="Firstname">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Lastname</label>
-                              <input type="text" class="form-control" id="lastname" placeholder="Lastname">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Username</label>
-                              <input type="text" class="form-control" id="username" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="pword" placeholder="Password">
-                            </div>
-                            <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="checkbox">
-                              <label class="form-check-label" for="exampleCheck1">I agree to your <a name="terms" href="#">Terms and Conditions</a></label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <span class=""><img class="img-fluid" width="50em" src="load.gif" /> <p class="small" >Please Wait while we confirm your information</p></span>
-                    </form>
+                <form id="addToCart">
+                    <p class="text-center text-uppercase h5">Make Sales</p>
+                        <div class="form-group">
+                          <label for="productId">Product Name</label>
+                          <input type="text" class="form-control" id="productName" placeholder="Name Of Product" onkeyup="query_suggestion()">
+                          <div>
+                            <select id="suggestion_div" style="display:none" size="5"></select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="productPrice">Price</label>
+                          <input type="number" class="form-control" id="productPrice" placeholder="" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="quantityDesired">Quantity</label>
+                          <input type="number" onchange="calculate()" class="form-control" id="quantityDesired" aria-describedby="emailHelp" placeholder="Enter Desired quantity">
+                        </div>
+                        <div class="form-group">
+                          <label for="quantity">Quantity In Stock</label>
+                          <input type="number" class="form-control" id="quantity" placeholder="Quantity in stock" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalPrice">Total Price</label>
+                            <input type="number" class="form-control" id="totalPrice" placeholder="0" readonly>
+                          </div>
+                        <div class="form-group form-check">
+                          <input type="checkbox" class="form-check-input" id="checkbox">
+                          <label class="form-check-label" for="exampleCheck1">I agree to your <a name="terms" href="#">Terms and Conditions</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add To Customer Cart</button>
+                        <span class=""><img class="img-fluid" width="50em" src="load.gif" /> 
+                          <p class="small" >Please Wait while we confirm your information</p></span>
+                </form>
+          </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-4 border border-success rounded p-2" id="salesList" >
+           
+            <div id="customerDetails">
+              <!-- <table class="table" id="salesTable">
+                  <div class="form-group">
+                      <label for="Customer Name">Customer's Name</label>
+                      <input type="text" class="form-control" id="productId" placeholder="Name Of Customer Making This Sale">
+                    </div>
+                  <tr class="small">
+                    <td>Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total Price</td>
+                  </tr>
+                </table> -->
             </div>
+            
+
+          </div>
+          <div class="col-md-1"></div>
+
 
             
             

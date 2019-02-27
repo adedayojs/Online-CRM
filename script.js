@@ -355,3 +355,65 @@ else{
     document.getElementById('confirm_pass_small').innerText="Confirm password and password mismatch";
 }
 }
+
+//////      Adding to the table of Items to be sold
+function addItemToCart(){
+    let cartDiv = document.getElementById('cutomerDetails');
+    let newForm = document.createElement('form');
+    newForm.innerHTML =   ``;
+    table.appendChild(tableRow)
+}
+function query_suggestion(){
+    let suggest=document.getElementById('productName').value;
+    var return_option='';
+    //alert(suggest);
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:3000/product?q=${suggest}`
+        
+      })
+        .done(function( msg ) {
+          for (let a=0;a<msg.length;a++){
+              var opt="<option onclick=\"getInnerText()\">"+msg[a].name+"</option>";
+              //console.log(opt);
+              return_option+=opt;
+          }
+          document.getElementById('suggestion_div').style.display="block";
+          document.getElementById('suggestion_div').innerHTML=return_option;
+           // console.log(msg.length);
+          //alert( msg.name);
+         // location.reload();
+        });
+}
+function getInnerText(textt){
+    //var a=this.innerText;
+    var a =document.getElementById('suggestion_div').value;
+    document.getElementById('productName').value=a;
+    document.getElementById('suggestion_div').style.display="none";
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:3000/product?=${a}`
+        
+      })
+        .done(function( msg ) {
+            document.getElementById('productPrice').value=msg[0].sellingPrice;
+            document.getElementById('quantity').value=msg[0].quantity;
+         });
+}
+
+function calculate(){
+    let price = document.getElementById('productPrice').value;
+    let quantity = document.getElementById('quantityDesired').value;
+    let totalPrice = price * quantity
+    document.getElementById('totalPrice').value = totalPrice
+}
+
+////    Add to Cart Function
+$(document).ready(
+    $("#addToCart").submit((event)=>{
+        event.preventDefault()
+        if($("#productName").val()&& $("#quantityDesired").val()){
+            addItemToCart()
+        }
+    })
+)
