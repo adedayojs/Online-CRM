@@ -32,20 +32,6 @@
   ],
   "product": [
     {
-      "name": "Infinix Hot",
-      "quantity": "2",
-      "costPrice": "23000",
-      "sellingPrice": "35000",
-      "id": 1
-    },
-    {
-      "name": "Tecno",
-      "quantity": "3",
-      "costPrice": "20000",
-      "sellingPrice": "50000",
-      "id": 2
-    },
-    {
       "name": "Infinix Hot 2",
       "quantity": "7",
       "costPrice": "15000",

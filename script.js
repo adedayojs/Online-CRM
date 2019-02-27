@@ -104,5 +104,47 @@ $(document).ready(
 
 // Product Deletion Script
 $(document).ready(
-    
+    $("#deleteProduct").submit(
+        function(e){
+            e.preventDefault();
+            document.getElementById('load').setAttribute('id','show')
+            $.ajax({
+                method:"GET",
+                url: `http://localhost:3000/product?name=${$("#deleteProductName").val()}`
+            })
+            .done(
+                function(res){
+                    if(res.length === 1){
+                        $.ajax({
+                            method:"DELETE",
+                            url: `http://localhost:3000/product/${res[0].id}`
+                            
+                        })
+                        .done(
+                            function(e){
+                            alert(`${$("#deleteProductName").val()} Was Successfully Deleted`);
+                            window.location.href ='productOperations.html'
+                            }
+                        )
+                        .fail(
+                            function(){
+                                alert('Sorry Something Went Wrong');
+                                window.location.reload()
+                            }
+                        )
+                    }
+                    else{
+                        alert('Sorry Product Not Found')
+                        window.location.reload();
+                    }
+                }
+            )
+            .fail(
+                function(e){
+                alert('Error Communicating From Server')
+                }
+            )
+            
+        }
+    )
 )
