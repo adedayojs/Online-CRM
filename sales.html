@@ -11,8 +11,9 @@
     <script>
         let staffId = window.localStorage.getItem('staffId');
         if(!(staffId)){
-            alert('Please Login With Staff ID');
-            window.location.href = 'login.html';
+          window.localStorage.setItem('url',window.location.href)
+          alert('Please Login With Staff ID');
+          window.location.href = 'login.html';
         }
     </script>
 </head>
@@ -27,7 +28,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav m-auto">
                         <li class="nav-item pl-5">
-                          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="staffPanel.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item pl-5">
                           <a class="nav-link" href="about.html">About</a>
@@ -51,14 +52,13 @@
     <div class="container">
         <br/>
         <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-4 border border-success rounded p-2">
+          <div class="col-md-8 border-right border-success rounded p-2">
               
                 <form id="addToCart">
                     <p class="text-center text-uppercase h5">Make Sales</p>
                         <div class="form-group">
                           <label for="productId">Product Name</label>
-                          <input type="text" class="form-control" id="productName" placeholder="Name Of Product" onkeyup="query_suggestion()">
+                          <input type="text" class="form-control" id="productName" placeholder="Name Of Product" autocomplete="off" onkeyup="query_suggestion()">
                           <div>
                             <select id="suggestion_div" style="display:none" size="5"></select>
                           </div>
@@ -88,32 +88,15 @@
                           <p class="small" >Please Wait while we confirm your information</p></span>
                 </form>
           </div>
-          <div class="col-md-3"></div>
-          <div class="col-md-4 border border-success rounded p-2" id="salesList" >
-           
-            <div id="customerDetails">
-              <!-- <table class="table" id="salesTable">
-                  <div class="form-group">
-                      <label for="Customer Name">Customer's Name</label>
-                      <input type="text" class="form-control" id="productId" placeholder="Name Of Customer Making This Sale">
-                    </div>
-                  <tr class="small">
-                    <td>Name</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Total Price</td>
-                  </tr>
-                </table> -->
-            </div>
-            
-
-          </div>
-          <div class="col-md-1"></div>
-
-
-            
-            
-        </div>
+          
+          <div class="col-md-4"  >
+              <div class="form-group row" id="salesList">
+                  <div class="col-4"><label for="customerId">Customer Id</label></div>
+                  <div class="col-8"><input type="text" class="form-control" id="customerId" placeholder="Input Customer ID"></div>
+              </div>
+              <div class="form-group m-auto" >
+                  <button class="btn btn-primary" onclick="makeSale()">Checkout</button>
+              </div>
     </div>
     
 </body>

@@ -1,10 +1,10 @@
 {
-    "admin": [
-        {
-          "id": "admin1234",
-          "password": "12345"
-        }
-      ],
+  "admin": [
+    {
+      "id": "admin1234",
+      "password": "12345"
+    }
+  ],
   "user": [
     {
       "firstname": "Adedayo",
@@ -57,6 +57,38 @@
       "costPrice": "150000",
       "sellingPrice": "180000",
       "id": 5
+    }
+  ],
+  "sales": [
+    {
+      "saleId": "/1551339326681/2019/1/28/2",
+      "time": "Thu Feb 28 2019 08:35:26 GMT+0100 (West Africa Standard Time)",
+      "soldBy": "2",
+      "id": 1
+    },
+    {
+      "item[Infinix Hot 2][name]": "Infinix Hot 2",
+      "item[Infinix Hot 2][price]": "40000",
+      "item[Infinix Hot 2][quantity]": "2",
+      "item[Samsung Galaxy Edge 7][name]": "Samsung Galaxy Edge 7",
+      "item[Samsung Galaxy Edge 7][price]": "80000",
+      "item[Samsung Galaxy Edge 7][quantity]": "4",
+      "saleId": "522/1551339648054/2019/1/28/2",
+      "time": "Thu Feb 28 2019 08:40:48 GMT+0100 (West Africa Standard Time)",
+      "soldBy": "2",
+      "id": 2
+    },
+    {
+      "item[Infinix Hot 2][name]": "Infinix Hot 2",
+      "item[Infinix Hot 2][price]": "20000",
+      "item[Infinix Hot 2][quantity]": "1",
+      "item[Samsung Galaxy Edge 7][name]": "Samsung Galaxy Edge 7",
+      "item[Samsung Galaxy Edge 7][price]": "60000",
+      "item[Samsung Galaxy Edge 7][quantity]": "3",
+      "saleId": "/1551347064869/2019/1/28/2",
+      "time": "Thu Feb 28 2019 10:44:24 GMT+0100 (West Africa Standard Time)",
+      "soldBy": "2",
+      "id": 3
     }
   ]
 }

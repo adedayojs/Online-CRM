@@ -231,12 +231,21 @@ $(document).ready(
                     alert('Invalid Login');
                 }
                 else{
+                    let url = window.localStorage.getItem('url')
+                    if(url){
+                        alert('Welcome Admin');
+                    //console.log(res)
+                    window.localStorage.clear()
+                    window.localStorage.setItem('adminId', `${res[0].id}`);
+                    window.location.href = url
+                    }
+                    else if(!url){
                     alert('Welcome Admin');
                     //console.log(res)
                     window.localStorage.clear()
                     window.localStorage.setItem('adminId', `${res[0].id}`)
 
-                    window.location="admin.html";
+                    window.location="admin.html";}
                 }
                     //else{alert('There is a problem')}
                 
@@ -356,13 +365,7 @@ else{
 }
 }
 
-//////      Adding to the table of Items to be sold
-function addItemToCart(){
-    let cartDiv = document.getElementById('cutomerDetails');
-    let newForm = document.createElement('form');
-    newForm.innerHTML =   ``;
-    table.appendChild(tableRow)
-}
+///     Search For Possible matches in the databasse
 function query_suggestion(){
     let suggest=document.getElementById('productName').value;
     var return_option='';
@@ -385,6 +388,9 @@ function query_suggestion(){
          // location.reload();
         });
 }
+
+
+
 function getInnerText(textt){
     //var a=this.innerText;
     var a =document.getElementById('suggestion_div').value;
@@ -409,11 +415,84 @@ function calculate(){
 }
 
 ////    Add to Cart Function
+
+//////      Adding to the table of Items to be sold
+function addItemToCart(){
+    let cartDiv = document.getElementById('salesList');
+    let newItem = document.createElement('div');
+    let itemIdBase = $('#productName').val();
+    newItem.setAttribute('id',`${itemIdBase}`);
+    newItem.setAttribute('class','row border-bottom border-success m-auto')
+    newItem.innerHTML =   `
+                            
+    <div class="col-4"><p>Product</p></div>
+    <div class="col-8"><p id="${$('#productName').val()}" class="itemName">${itemIdBase}</p></div>
+
+    <div class="col-4"><p>Quantity</p></div>
+    <div class="col-8"><p id="${$('#productName').val()}" class="itemQuantity">${$("#quantityDesired").val()}</p></div>
+
+    <div class="col-4"><p>Total Price</p></div>
+    <div class="col-8"><p id="${$('#productName').val()}" class="itemPrice">${$("#totalPrice").val()}</p></div>
+                                
+                            
+                            
+                            
+`;
+    cartDiv.appendChild(newItem);
+}
 $(document).ready(
     $("#addToCart").submit((event)=>{
         event.preventDefault()
         if($("#productName").val()&& $("#quantityDesired").val()){
             addItemToCart()
         }
+        else{
+            alert('Please Input Quantity and Product Name');
+        }
     })
 )
+
+function makeSale(){
+    let check;
+    let cartList = document.getElementById('salesList');
+    cartList = cartList.children
+    let items = {};
+    let customerId = document.getElementById('customerId').value;
+    let staffId = window.localStorage.getItem('staffId');
+    let saleDate = new Date();
+    let saleId = `${customerId}/${saleDate.getTime()}/${saleDate.getUTCFullYear()}/${saleDate.getUTCMonth()}/${saleDate.getUTCDate()}/${staffId}`;
+    
+    for (i=2; i<cartList.length; i++){
+        let name = cartList[i].getElementsByClassName('itemName');
+        name = name[0].innerText;
+        let price = cartList[i].getElementsByClassName('itemPrice');
+        price = price[0].innerText;
+        let quantity = cartList[i].getElementsByClassName('itemQuantity');
+        quantity = quantity[0].innerText;
+        let item = {name:name,price:price,quantity:quantity}
+        items[`${name}`] = item
+    }
+    console.log({
+        item:items,
+        saleId:saleId,
+        time:saleDate,
+        soldBy:staffId                  
+    })
+     $(document).ready(
+        $.ajax({
+            method: "POST",
+            url: `http://localhost:3000/sales`,
+            data: {
+                item:items,
+                saleId:saleId,
+                time:saleDate,
+                soldBy:staffId                  
+            }
+            
+          }).done(
+              function(msg){
+                alert('Done' + msg)
+                console.log(msg)
+             })
+    );
+}

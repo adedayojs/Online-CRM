@@ -10,8 +10,9 @@
     <script>
         let adminId = window.localStorage.getItem('adminId');
         if(!(adminId)){
-            alert('Please Login');
-            window.location.href = 'admin_login.html';
+          window.localStorage.setItem('url',window.location.href)
+          alert('Please Login');
+          window.location.href = 'admin_login.html';
         }
     </script>
     
@@ -27,7 +28,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav m-auto">
                         <li class="nav-item pl-5">
-                          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="admin.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item pl-5">
                           <a class="nav-link" href="about.html">About</a>

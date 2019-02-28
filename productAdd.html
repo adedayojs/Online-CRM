@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 
-    
+    <script>
+        let adminId = window.localStorage.getItem('adminId');
+        if(!(adminId)){
+          window.localStorage.setItem('url',window.location.href)
+            alert('Please Login With Admin ID');
+            window.location.href = 'admin_login.html';
+        }
+    </script>
 </head>
 <body>
     <header>
