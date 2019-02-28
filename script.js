@@ -378,7 +378,7 @@ function query_suggestion(){
         .done(function( msg ) {
           for (let a=0;a<msg.length;a++){
               var opt="<option onclick=\"getInnerText()\">"+msg[a].name+"</option>";
-              //console.log(opt);
+              console.log(opt);
               return_option+=opt;
           }
           document.getElementById('suggestion_div').style.display="block";
@@ -398,48 +398,77 @@ function getInnerText(textt){
     document.getElementById('suggestion_div').style.display="none";
     $.ajax({
         method: "GET",
-        url: `http://localhost:3000/product?=${a}`
+        url: `http://localhost:3000/product?name=${a}`
         
       })
         .done(function( msg ) {
+            console.log(msg)
             document.getElementById('productPrice').value=msg[0].sellingPrice;
             document.getElementById('quantity').value=msg[0].quantity;
          });
 }
 
+
+////    Calculate Grand Totall
 function calculate(){
     let price = document.getElementById('productPrice').value;
     let quantity = document.getElementById('quantityDesired').value;
     let totalPrice = price * quantity
     document.getElementById('totalPrice').value = totalPrice
+
+    let lenght_of_total=document.getElementsByClassName('itemPrice').length;
+    var grand_total=0;
+    for (var a=0;a<lenght_of_total;a++){
+        grand_total+=parseInt(document.getElementsByClassName('itemPrice')[a].value);
+    }
+    
+    $('#grandTotal').val(grand_total);
+}
+
+
+/////   Call Grand Total function and Price Total Functions
+function twoCalculate(){
+
+    calculate_total()
+    calculate()
 }
 
 ////    Add to Cart Function
 
 //////      Adding to the table of Items to be sold
+let productTracker = 0
 function addItemToCart(){
-    let cartDiv = document.getElementById('salesList');
-    let newItem = document.createElement('div');
+    let cartDiv = document.getElementById('receipt_table');
+    let newItem = document.createElement('tr');
     let itemIdBase = $('#productName').val();
     newItem.setAttribute('id',`${itemIdBase}`);
-    newItem.setAttribute('class','row border-bottom border-success m-auto')
+    newItem.setAttribute('class','border-bottom border-success')
     newItem.innerHTML =   `
                             
-    <div class="col-4"><p>Product</p></div>
-    <div class="col-8"><p id="${$('#productName').val()}" class="itemName">${itemIdBase}</p></div>
-
-    <div class="col-4"><p>Quantity</p></div>
-    <div class="col-8"><p id="${$('#productName').val()}" class="itemQuantity">${$("#quantityDesired").val()}</p></div>
-
-    <div class="col-4"><p>Total Price</p></div>
-    <div class="col-8"><p id="${$('#productName').val()}" class="itemPrice">${$("#totalPrice").val()}</p></div>
-                                
-                            
-                            
-                            
-`;
+    <td class=""><input type="text" id="${itemIdBase}" onchange="calculate_total(${productTracker}) " value="${itemIdBase}" class="itemName" readonly /></td>
+    <td class=""><input type="number" id="${itemIdBase}" onchange="calculate_total(${productTracker})" value="${$('#productPrice').val()}" class="itemSinglePrice" readonly/></td>
+    <td class=""><input type="number" id="${itemIdBase}" onchange="calculate_total(${productTracker})" value="${$('#quantityDesired').val()}" class="itemQuantity" /></td>
+    <td class=""><input type="number" id="${itemIdBase}" onchange="calculate_total(${productTracker})" value="${$('#totalPrice').val()}" class="itemPrice" readonly/></td>`;
     cartDiv.appendChild(newItem);
+    let lenght_of_total=document.getElementsByClassName('itemPrice').length;
+    var grand_total=0;
+    for (var a=0;a<lenght_of_total;a++){
+        grand_total+=parseInt(document.getElementsByClassName('itemPrice')[a].value);
+    }
+    
+    $('#grandTotal').val(grand_total)
+    productTracker++
 }
+
+
+///     Calculate Price on cart
+function calculate_total(count){
+    let quantity=document.getElementsByClassName('itemQuantity')[count].value;
+    let price=document.getElementsByClassName('itemSinglePrice')[count].value;
+    let total=quantity * price;
+    document.getElementsByClassName('itemPrice')[count].value=total;
+}
+
 $(document).ready(
     $("#addToCart").submit((event)=>{
         event.preventDefault()
@@ -461,6 +490,7 @@ function makeSale(){
     let staffId = window.localStorage.getItem('staffId');
     let saleDate = new Date();
     let saleId = `${customerId}/${saleDate.getTime()}/${saleDate.getUTCFullYear()}/${saleDate.getUTCMonth()}/${saleDate.getUTCDate()}/${staffId}`;
+    let customerId = document.getElementById('customerId').value;
     
     for (i=2; i<cartList.length; i++){
         let name = cartList[i].getElementsByClassName('itemName');
@@ -482,12 +512,15 @@ function makeSale(){
         $.ajax({
             method: "POST",
             url: `http://localhost:3000/sales`,
-            data: {
+            data: JSON.stringify({
                 item:items,
-                saleId:saleId,
+                id:saleId,
                 time:saleDate,
-                soldBy:staffId                  
-            }
+                soldBy:staffId,
+                boughtBy:customerId                  
+            }),
+            contentType: "application/json"
+
             
           }).done(
               function(msg){
@@ -496,3 +529,29 @@ function makeSale(){
              })
     );
 }
+
+
+//function to get all products  
+$(document).ready(function(){
+    $("#viewAllProducts").ready(function(){
+        
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:3000/sales/",
+             
+          })
+            .done(function( msg ) {
+              
+             console.log(msg);
+              let a="<table id=\"update_table\">"+
+              "<tr><td>Id</td><td>Names</td><td>View</td><td>Delete</td></tr>";
+              for(var b=0;b<msg.length;b++){
+                a+="<tr><td>" +msg[b].id+ "</td><td>"+msg[b].firstname+" "+msg[b].lastname+"</td><td><button onclick=\"view_details("+b+")\">View</button> </td><td><button onclick=\"perform_deletion("+b+")\">Delete</button></td></tr><input type=\"hidden\" class=\"hidden_value\" value=\""+msg[b].id+"\">";
+          //    console.log(a);
+              }
+              a+="</table>";
+              document.getElementById('view_user_body').innerHTML=a;
+            });
+        
+    })
+  })

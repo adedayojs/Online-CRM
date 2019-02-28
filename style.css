@@ -21,3 +21,6 @@ ul li a, .white {
     height: 2em;
     
 }
+.itemName, .itemSinglePrice, .itemQuantity, .itemPrice {
+    border: none;
+}
