@@ -38,13 +38,6 @@
   ],
   "product": [
     {
-      "name": "Infinix Hot 2",
-      "quantity": "7",
-      "costPrice": "15000",
-      "sellingPrice": "20000",
-      "id": 3
-    },
-    {
       "name": "Iphone 4",
       "quantity": "6",
       "costPrice": "50000",
@@ -60,87 +53,13 @@
     },
     {
       "name": "Tecno",
-      "quantity": "1985",
+      "quantity": "19858",
       "costPrice": "15000",
-      "sellingPrice": "14503",
+      "sellingPrice": "15005",
       "id": 6
     }
   ],
   "sales": [
-    {
-      "saleId": "/1551339326681/2019/1/28/2",
-      "time": "Thu Feb 28 2019 08:35:26 GMT+0100 (West Africa Standard Time)",
-      "soldBy": "2",
-      "id": 1
-    },
-    {
-      "item[Infinix Hot 2][name]": "Infinix Hot 2",
-      "item[Infinix Hot 2][price]": "40000",
-      "item[Infinix Hot 2][quantity]": "2",
-      "item[Samsung Galaxy Edge 7][name]": "Samsung Galaxy Edge 7",
-      "item[Samsung Galaxy Edge 7][price]": "80000",
-      "item[Samsung Galaxy Edge 7][quantity]": "4",
-      "saleId": "522/1551339648054/2019/1/28/2",
-      "time": "Thu Feb 28 2019 08:40:48 GMT+0100 (West Africa Standard Time)",
-      "soldBy": "2",
-      "id": 2
-    },
-    {
-      "item[Infinix Hot 2][name]": "Infinix Hot 2",
-      "item[Infinix Hot 2][price]": "20000",
-      "item[Infinix Hot 2][quantity]": "1",
-      "item[Samsung Galaxy Edge 7][name]": "Samsung Galaxy Edge 7",
-      "item[Samsung Galaxy Edge 7][price]": "60000",
-      "item[Samsung Galaxy Edge 7][quantity]": "3",
-      "saleId": "/1551347064869/2019/1/28/2",
-      "time": "Thu Feb 28 2019 10:44:24 GMT+0100 (West Africa Standard Time)",
-      "soldBy": "2",
-      "id": 3
-    },
-    {
-      "item[0][name]": "Infinix Hot 2",
-      "item[0][price]": "40000",
-      "item[0][quantity]": "2",
-      "item[1][name]": "Samsung Galaxy Edge 7",
-      "item[1][price]": "40000",
-      "item[1][quantity]": "2",
-      "saleId": "/1551352048189/2019/1/28/2",
-      "time": "Thu Feb 28 2019 12:07:28 GMT+0100 (West Africa Standard Time)",
-      "soldBy": "2",
-      "id": 4
-    },
-    {
-      "item": "{\"Infinix Hot 2\":{\"name\":\"Infinix Hot 2\",\"price\":\"60000\",\"quantity\":\"3\"},\"Samsung Galaxy Edge 7\":{\"name\":\"Samsung Galaxy Edge 7\",\"price\":\"1975300000\",\"quantity\":\"98765\"}}",
-      "saleId": "/1551352387727/2019/1/28/2",
-      "time": "Thu Feb 28 2019 12:13:07 GMT+0100 (West Africa Standard Time)",
-      "soldBy": "2",
-      "id": 5
-    },
-    {
-      "item": {
-        "Tecno": {
-          "name": "Tecno",
-          "price": "4680000",
-          "quantity": "234"
-        },
-        "Infinix Hot 2": {
-          "name": "Infinix Hot 2",
-          "price": "468460000",
-          "quantity": "23423"
-        }
-      },
-      "saleId": "/1551354813443/2019/1/28/2",
-      "time": "2019-02-28T11:53:33.443Z",
-      "soldBy": "2",
-      "id": 6
-    },
-    {
-      "item": {},
-      "saleId": "/1551360458743/2019/1/28/2",
-      "time": "2019-02-28T13:27:38.743Z",
-      "soldBy": "2",
-      "id": 7
-    },
     {
       "item": {},
       "grandPrice": "460000",
