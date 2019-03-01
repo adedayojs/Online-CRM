@@ -52,7 +52,7 @@
     <div class="container">
         <br/>
         <div class="row">
-          <div class="col-md-3 border-right border-success rounded p-2">
+          <div class="col-md-3 border-right border-dark rounded p-2">
               
                 <form id="addToCart">
                     <p class="text-center text-uppercase h5">Make Sales</p>
@@ -91,23 +91,25 @@
           
           <div class="col-md-9"  >
               <div class="form-group row" id="salesList">
+                  
                   <div class="col-4"><label for="customerId">Customer Id</label></div>
                   <div class="col-8"><input type="text" class="form-control" id="customerId" placeholder="Input Customer ID"></div>
-              </div>
-              <div class="table-responsive">
-                <table class="table" id="receipt_table">
-                    <tr>
-                        <td>Item Name</td>
-                        <td>Price</td>
-                        <td>Quantity</td>
-                        <td>Total </td>
-                    </tr>
-                </table> 
+              
+                  <div class="table-responsive">
+                    <table class="table" id="receipt_table">
+                        <tr>
+                            <td>Item Name</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Total </td>
+                        </tr>
+                    </table> 
+                  </div>
               </div> 
               <div class="row form-group m-auto" >
                 <div class="col-2" ><label class="btn btn-primary" for="grandTotal">Grand Total</label></div>
                 <div class="col-2"> <input type="number" class="form-control" id="grandTotal" placeholder="0" readonly></div> 
-                 <div class="col-4"> <button class="btn btn-success" onclick="makeSale()">Checkout</button></div>
+                 <div class="col-4"> <button class="btn btn-success" onclick="initSale()">Checkout</button></div>
               </div>
     </div>
     

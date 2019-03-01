@@ -16,10 +16,10 @@ $(document).ready(
     }
 }
     )
+)
+
 
 //  Staff Login Validation Script
-    
-)
 
 $(document).ready(
     
@@ -47,7 +47,7 @@ $(document).ready(
                     let userId = res[0].id;
                     window.localStorage.setItem('staffId',`${userId}`)
                     window.localStorage.setItem('name',`${firstName} ${lastName}`)
-                    //document.cookie = `staffId=${res[0].id}, Firstname=${res[0].firstname}, Lastname=${res[0].lastname}`
+                    
                 }
             })   
     }
@@ -152,31 +152,6 @@ $(document).ready(
             
         }
     )
-)
-
-//  Get a list of all product
-$(document).on('load', 
-    function(){
-        $.ajax({
-            method:"GET",
-            url: `http://localhost:3000/product`
-        })
-        .done(function(res){
-            alert(res);
-            let select = document.createElement('select')
-            let doc = getElementById('selectProduct');
-            doc.appendChild(select)
-            res.forEach(function (product){
-                alert(product.name);
-                let option = document.createElement('option');
-                option.innerText = product.name
-                select.appendChild(option)
-            })
-            let divInDoc = getElementById('selectProduct');
-            divInDoc.appendChild('')
-        })
-        
-    }
 )
 
 //////      Addition Of Staff  
@@ -408,6 +383,23 @@ function getInnerText(textt){
          });
 }
 
+///     Calculate Price on cart
+function calculate_total(count){
+    let quantity=document.getElementsByClassName('itemQuantity')[count].value;
+    let price=document.getElementsByClassName('itemSinglePrice')[count].value;
+    let total=quantity * price;
+    document.getElementsByClassName('itemPrice')[count].value=total;
+
+
+    let lenght_of_total=document.getElementsByClassName('itemPrice').length;
+    var grand_total=0;
+    for (var a=0;a<lenght_of_total;a++){
+        grand_total+=parseInt(document.getElementsByClassName('itemPrice')[a].value);
+    }
+    
+    $('#grandTotal').val(grand_total)
+}
+
 
 ////    Calculate Grand Totall
 function calculate(){
@@ -426,12 +418,6 @@ function calculate(){
 }
 
 
-/////   Call Grand Total function and Price Total Functions
-function twoCalculate(){
-
-    calculate_total()
-    calculate()
-}
 
 ////    Add to Cart Function
 
@@ -442,7 +428,7 @@ function addItemToCart(){
     let newItem = document.createElement('tr');
     let itemIdBase = $('#productName').val();
     newItem.setAttribute('id',`${itemIdBase}`);
-    newItem.setAttribute('class','border-bottom border-success')
+    newItem.setAttribute('class','border-bottom border-dark')
     newItem.innerHTML =   `
                             
     <td class=""><input type="text" id="${itemIdBase}" onchange="calculate_total(${productTracker}) " value="${itemIdBase}" class="itemName" readonly /></td>
@@ -458,17 +444,11 @@ function addItemToCart(){
     
     $('#grandTotal').val(grand_total)
     productTracker++
+    document.getElementById("addToCart").reset()
 }
 
 
-///     Calculate Price on cart
-function calculate_total(count){
-    let quantity=document.getElementsByClassName('itemQuantity')[count].value;
-    let price=document.getElementsByClassName('itemSinglePrice')[count].value;
-    let total=quantity * price;
-    document.getElementsByClassName('itemPrice')[count].value=total;
-}
-
+///     Jquery Calling Function to add to cart 
 $(document).ready(
     $("#addToCart").submit((event)=>{
         event.preventDefault()
@@ -481,39 +461,56 @@ $(document).ready(
     })
 )
 
+
+///     Call Funtion to Checkout After Checking if conditions like Customer Id and Item Is Present
+function initSale(){
+    let b = document.getElementById('receipt_table')
+
+    if(!($('#customerId').val())){
+        alert('Please Input Customer ID')
+    }
+    else{ 
+        if(b.childElementCount<2){
+            alert('Please Select a Product(s) To Purchase');
+        }
+        else{
+            makeSale()
+        }
+    }
+
+}
+
+
+/////   Process The Sale (CHECKOUT FUNCTION)
 function makeSale(){
     let check;
-    let cartList = document.getElementById('salesList');
+    let cartList = document.getElementById('receipt_table');
     cartList = cartList.children
     let items = {};
+    let grandTotal = $('#grandTotal').val();
     let customerId = document.getElementById('customerId').value;
     let staffId = window.localStorage.getItem('staffId');
     let saleDate = new Date();
     let saleId = `${customerId}/${saleDate.getTime()}/${saleDate.getUTCFullYear()}/${saleDate.getUTCMonth()}/${saleDate.getUTCDate()}/${staffId}`;
-    let customerId = document.getElementById('customerId').value;
     
-    for (i=2; i<cartList.length; i++){
+    for (let i=1; i<cartList.length; i++){
         let name = cartList[i].getElementsByClassName('itemName');
-        name = name[0].innerText;
+        name = name[0].value;
         let price = cartList[i].getElementsByClassName('itemPrice');
-        price = price[0].innerText;
+        price = price[0].value;
         let quantity = cartList[i].getElementsByClassName('itemQuantity');
-        quantity = quantity[0].innerText;
+        quantity = quantity[0].value;
         let item = {name:name,price:price,quantity:quantity}
         items[`${name}`] = item
     }
-    console.log({
-        item:items,
-        saleId:saleId,
-        time:saleDate,
-        soldBy:staffId                  
-    })
+    console.log(items)
      $(document).ready(
         $.ajax({
             method: "POST",
             url: `http://localhost:3000/sales`,
             data: JSON.stringify({
                 item:items,
+                grandPrice:grandTotal,
                 id:saleId,
                 time:saleDate,
                 soldBy:staffId,
@@ -530,28 +527,118 @@ function makeSale(){
     );
 }
 
-
+let formCounter = 0;
 //function to get all products  
 $(document).ready(function(){
-    $("#viewAllProducts").ready(function(){
+    $("#productsList").ready(function(){
         
         $.ajax({
             method: "GET",
-            url: "http://localhost:3000/sales/",
+            url: "http://localhost:3000/product/",
              
           })
-            .done(function( msg ) {
+            .done(
+                function(msg) {
+                    let row = document.getElementById('productsList');
+                for(let i=0; i<msg.length; i++){
+                    let column = document.createElement('div');
+                    column.setAttribute('class','col-sm-3')
+                    column.innerHTML = `
+                    <form class="productForms border border-dark rounded" id="${formCounter}">
+                        <div class="form-group">
+                          <label>Name</label>
+                          <input type="text" class="form-control productName" value="${msg[i].name}" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label>Quantity</label>
+                          <input type="number" class="form-control productQuantity" value="${msg[i].quantity}" disabled="false" >
+                        </div>
+                        <div class="form-group">
+                          <label>Selling Price</label>
+                          <input type="number" class="form-control productPrice" value="${msg[i].sellingPrice}" disabled>
+                        </div>
+                        <small>
+                        <input type="hidden" class="productId" value="${msg[i].id}"/>
+                        <input type="checkbox" class="checked" onchange="allowEdit(${formCounter})"/> <label class="p-auto">Allow Edit</label>
+                        
+                        
+                        <input onclick="updateProduct(${formCounter})" type="button" value='Update' class="btn btn-success m-auto" />
+                        <input onclick="deleteProduct(${formCounter})" type="button" value='Delete' class="btn btn-danger m-auto" />
+                        </small>
+                    </form>
+                    <br>`
+                  row.append(column)
+                  formCounter++
+                }
               
-             console.log(msg);
-              let a="<table id=\"update_table\">"+
-              "<tr><td>Id</td><td>Names</td><td>View</td><td>Delete</td></tr>";
-              for(var b=0;b<msg.length;b++){
-                a+="<tr><td>" +msg[b].id+ "</td><td>"+msg[b].firstname+" "+msg[b].lastname+"</td><td><button onclick=\"view_details("+b+")\">View</button> </td><td><button onclick=\"perform_deletion("+b+")\">Delete</button></td></tr><input type=\"hidden\" class=\"hidden_value\" value=\""+msg[b].id+"\">";
-          //    console.log(a);
-              }
-              a+="</table>";
-              document.getElementById('view_user_body').innerHTML=a;
             });
         
     })
   })
+
+  ///       Allow Update
+  function allowEdit(index){
+    let form = document.getElementById(`${index}`)
+    let productQuantity = form.getElementsByClassName('productQuantity')[0];
+    let productPrice = form.getElementsByClassName('productPrice')[0];
+    if(productPrice.disabled===true){
+        console.log(productPrice.disabled);
+        productQuantity.disabled = false
+        productPrice.disabled = false;
+    }   else{
+        console.log(productPrice.disabled);
+        productQuantity.disabled=true;
+        productPrice.disabled=true;
+    }
+    
+  }
+
+///     Update Product
+function updateProduct(index){
+   
+    let form = document.getElementById(`${index}`)
+    let productName = form.getElementsByClassName('productName')[0].value;
+    let productQuantity = form.getElementsByClassName('productQuantity')[0].value;
+    let productPrice = form.getElementsByClassName('productPrice')[0].value;
+    let productId = form.getElementsByClassName('productId')[0].value;
+    let decision = confirm('Are You Sure You want to update?');
+    if (!decision){return decision}
+    $.ajax({
+        method:"PATCH",
+        url: `http://localhost:3000/product/${productId}`,
+        data:{
+            name:productName,
+            quantity:productQuantity,
+            sellingPrice:productPrice
+            }
+    }).done(
+        function(res){
+            alert(`${productName} Details updated`);
+            console.log(res);
+        }
+    ).fail(
+        function(err){
+            alert('Something I Wrong');
+            console.log(err);
+        }
+    )
+}
+
+
+///     Delete Product
+function deleteProduct(index){
+    let form = document.getElementById(`${index}`)
+    let productName = form.getElementsByClassName('productName')[0].value;
+    let productId = form.getElementsByClassName('productId')[0].value;
+    let decision = confirm('Are You Sure You want to delete?');
+    if (!decision){return decision}
+    $.ajax({
+        method:"DELETE",
+        url: `http://localhost:3000/product/${productId}`,
+        
+    }).done(
+        function(){
+            alert(`${productName} Details Deleted`)
+        }
+    )
+}

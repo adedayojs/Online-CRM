@@ -1,6 +1,6 @@
 //function to get all user  
 $(document).ready(function(){
-  $("#view_user_body").ready(function(){
+  $("#view_user_body").ready(function(e){
       
       $.ajax({
           method: "GET",

@@ -53,16 +53,16 @@
     },
     {
       "name": "Samsung Galaxy Edge 7",
-      "quantity": "3",
+      "quantity": "365",
       "costPrice": "150000",
-      "sellingPrice": "180000",
+      "sellingPrice": "250000",
       "id": 5
     },
     {
       "name": "Tecno",
-      "quantity": "50",
+      "quantity": "1985",
       "costPrice": "15000",
-      "sellingPrice": "25000",
+      "sellingPrice": "14503",
       "id": 6
     }
   ],
@@ -140,6 +140,88 @@
       "time": "2019-02-28T13:27:38.743Z",
       "soldBy": "2",
       "id": 7
+    },
+    {
+      "item": {},
+      "grandPrice": "460000",
+      "id": "1130267087/1551369740085/2019/1/28/1",
+      "time": "2019-02-28T16:02:20.085Z",
+      "soldBy": "1",
+      "boughtBy": "1130267087"
+    },
+    {
+      "item": {},
+      "grandPrice": "350000",
+      "id": "55/1551369950897/2019/1/28/1",
+      "time": "2019-02-28T16:05:50.897Z",
+      "soldBy": "1",
+      "boughtBy": "55"
+    },
+    {
+      "item": {},
+      "grandPrice": "720000",
+      "id": "1130/1551370917745/2019/1/28/1",
+      "time": "2019-02-28T16:21:57.745Z",
+      "soldBy": "1",
+      "boughtBy": "1130"
+    },
+    {
+      "item": {
+        "name": "Bobby"
+      },
+      "grandPrice": "9900000",
+      "id": "52/1551370995195/2019/1/28/1",
+      "time": "2019-02-28T16:23:15.195Z",
+      "soldBy": "1",
+      "boughtBy": "52"
+    },
+    {
+      "item": {
+        "name": "Bobby"
+      },
+      "grandPrice": "1125000",
+      "id": "gvhj/1551371105222/2019/1/28/1",
+      "time": "2019-02-28T16:25:05.222Z",
+      "soldBy": "1",
+      "boughtBy": "gvhj"
+    },
+    {
+      "item": {
+        "Iphone 4": {
+          "name": "Iphone 4",
+          "price": "3780000",
+          "quantity": "54"
+        },
+        "Infinix Hot 2": {
+          "name": "Infinix Hot 2",
+          "price": "100000",
+          "quantity": "5"
+        },
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "1440000",
+          "quantity": "8"
+        }
+      },
+      "grandPrice": "6220000",
+      "id": "1130267087/1551373360540/2019/1/28/1",
+      "time": "2019-02-28T17:02:40.540Z",
+      "soldBy": "1",
+      "boughtBy": "1130267087"
+    },
+    {
+      "item": {
+        "Iphone 4": {
+          "name": "Iphone 4",
+          "price": "6650000",
+          "quantity": "95"
+        }
+      },
+      "grandPrice": "6650000",
+      "id": "53542/1551374222835/2019/1/28/2",
+      "time": "2019-02-28T17:17:02.835Z",
+      "soldBy": "2",
+      "boughtBy": "53542"
     }
   ]
 }
