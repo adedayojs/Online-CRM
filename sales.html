@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 
-    
+    <script>
+        let staffId = window.localStorage.getItem('staffId');
+        if(!(staffId)){
+          window.localStorage.setItem('url',window.location.href)
+          alert('Please Login With Staff ID');
+          window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -19,25 +26,25 @@
                     </button>
                   
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav m-auto">
-                          <li class="nav-item pl-2 pr-2">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                      <ul class="navbar-nav m-auto">
+                        <li class="nav-item pl-2 pr-2">
+                          <a class="nav-link" href="staffPanel.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item pl-2 pr-2">
+                          <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item pl-2 pr-2">
+                          <a class="nav-link" href="logout.html">Logout</a>
                           </li>
-                          <li class="nav-item pl-2 pr-2">
-                            <a class="nav-link" href="about.html">About</a>
-                          </li>
-                          <li class="nav-item pl-2 pr-2">
-                            <a class="nav-link" href="admin_login.html">Admin Login</a>
-                            </li>
-                          <li class="nav-item pl-2 pr-2">
-                            <a class="nav-link" href="faq.html">FAQ</a>
-                          </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                      </div>
+                        <li class="nav-item pl-2 pr-2">
+                          <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                      </ul>
+                      <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                      </form>
+                    </div>
                   </nav>
         
     </header>
@@ -45,35 +52,65 @@
     <div class="container">
         <br/>
         <div class="row">
-            <div class="col-md-4">
-                
-            </div>
-
-            <div class="col-md-4 border border-dark rounded p-2">
-                    <form id="login">
-                        <p class="text-center text-uppercase h5">Login</p>
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Staff Id</label>
-                              <input type="text" class="form-control " id="staffId" aria-describedby="emailHelp" placeholder="Enter Your ID" required>
-                              <small id="emailHelp" class="form-text text-muted">Login with your ID</small>
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="pword" placeholder="Password" required>
-                            </div>
-                            <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="checkbox">
-                              <label class="form-check-label" for="exampleCheck1">I am a Human</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-            </div>
-
-            <div class="col-md-4">
-                
-            </div>
-            
-        </div>
+          <div class="col-md-3 border-right border-dark rounded p-2">
+              
+                <form id="addToCart">
+                    <p class="text-center text-uppercase h5">Make Sales</p>
+                        <div class="form-group">
+                          <label for="productId">Product Name</label>
+                          <input type="text" class="form-control" id="productName" placeholder="Name Of Product" autocomplete="off" onkeyup="query_suggestion()">
+                          <div>
+                            <select id="suggestion_div" style="display:none" size="5"></select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="productPrice">Price</label>
+                          <input type="number" class="form-control" id="productPrice" placeholder="" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label for="quantityDesired">Quantity</label>
+                          <input type="number" onchange="calculate()" class="form-control" id="quantityDesired" aria-describedby="emailHelp" placeholder="Enter Desired quantity">
+                        </div>
+                        <div class="form-group">
+                          <label for="quantity">Quantity In Stock</label>
+                          <input type="number" class="form-control" id="quantity" placeholder="Quantity in stock" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="totalPrice">Total Price</label>
+                            <input type="number" class="form-control" id="totalPrice" placeholder="0" readonly>
+                          </div>
+                        <div class="form-group form-check">
+                          <input type="checkbox" class="form-check-input" id="checkbox">
+                          <label class="form-check-label" for="exampleCheck1">I agree to your <a name="terms" href="#">Terms and Conditions</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add To Customer Cart</button> 
+                        <span class=""><img class="img-fluid" width="50em" src="load.gif" /> 
+                          <p class="small" >Please Wait while we confirm your information</p></span>
+                </form>
+          </div>
+          
+          <div class="col-md-9"  >
+              <div class="form-group row" id="salesList">
+                  
+                  <div class="col-4"><label for="customerId">Customer Id</label></div>
+                  <div class="col-8"><input type="text" class="form-control" id="customerId" placeholder="Input Customer ID"></div>
+              
+                  <div class="table-responsive">
+                    <table class="table" id="receipt_table">
+                        <tr>
+                            <td>Item Name</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Total </td>
+                        </tr>
+                    </table> 
+                  </div>
+              </div> 
+              <div class="row form-group m-auto" >
+                <div class="col-2" ><label class="btn btn-primary" for="grandTotal">Grand Total</label></div>
+                <div class="col-2"> <input type="number" class="form-control" id="grandTotal" placeholder="0" readonly></div> 
+                 <div class="col-4"> <button class="btn btn-success" onclick="initSale()">Checkout</button></div>
+              </div>
     </div>
     
     <!-- Footer -->

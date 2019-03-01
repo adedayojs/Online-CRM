@@ -1,0 +1,15 @@
+body{
+    background-color: yellow;
+}
+header {
+    background-color: darkgreen;
+
+}
+header ul {
+    list-style-type: none;
+    display: inline-block;
+    overflow: hidden;
+}
+ul li a, .white {
+    color: #fff !important;
+}
