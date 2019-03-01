@@ -14,6 +14,7 @@
         tr{margin: 5%;border-bottom: 1px solid grey;padding: 2%}
         td{vertical-align: text-top;padding: 1%;border: 1px solid black;min-width: 50px;}
         tr:nth-child(1){color: blue;font-weight: bolder;text-transform: uppercase;text-align: center}
+        #paginate{float:right;width:5%;display: inline-block;background-color: green;text-align: center;margin: 0.3%;padding: 0.2%}
             </style>
         <script src="jquery-3.3.1.js"></script>
         <script src="view_transaction_script.js" type="text/javascript"></script>
@@ -63,6 +64,8 @@
                     <td>date and Time</td>
                 </tr>
             </table>
+            <div id="paginate" onclick="paginate_forward()">Next</div>
+            <div id="paginate" onclick="paginate_back()"> Prev</div>
             </div>
     </body>
 </html>
