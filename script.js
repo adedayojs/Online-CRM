@@ -530,6 +530,7 @@ function makeSale(){
 let formCounter = 0;
 //function to get all products  
 $(document).ready(function(){
+    if(window.location.pathname!='/web/productManage.html'){return false}
     $("#productsList").ready(function(){
         
         $.ajax({

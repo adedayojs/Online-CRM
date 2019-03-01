@@ -1,21 +1,73 @@
 body{
     background-color: dimgrey !important;
+   
+    animation-duration: 5s;
+    animation-name: fadein;
 }
+@keyframes fadein {
+    from {
+        display: none;    }
+  
+    to {
+        display: visible;    }
+  }
 body .row{
     margin:1em auto;
 }
+a:hover{
+    opacity: 0.5;
+    animation-direction: alternate;
+}
 header {
-    background-color: black
-
+    background-color: black;
 }
 header ul {
     list-style-type: none;
     display: inline-block;
     overflow: hidden;
 }
+
 ul li a, .white {
     color: #fff !important;
+
 }
+ul li a:hover, ul li:hover{
+    
+    animation-name: change;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+} 
+@keyframes change {
+    from {
+        color: #fff !important;
+    }
+  
+    to {
+        background-color: blue;
+        color: black !important;
+    }
+}
+a {
+    text-decoration-line:none;
+
+}
+a:hover {
+    text-decoration-line:none !important;
+    animation-name: change;
+    animation-duration: 2s;
+} 
+@keyframes change {
+    from {
+        color: #fff !important;
+    }
+  
+    to {
+        background-color: white;
+        color: black !important;
+    }
+}
+
 #load{
     height: 2em;
     visibility: hidden;
@@ -29,4 +81,8 @@ ul li a, .white {
 }
 .productForms {
     padding:1%;
+}
+h3.bg-light.text-center {
+    color: black;
+    background-color: grey !important;
 }
