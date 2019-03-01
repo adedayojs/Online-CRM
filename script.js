@@ -245,7 +245,7 @@ $(document).ready(function(){
           var emailAddress=$("#email").val();
           var phoneNumber=$("#phone").val();
           var staffId = window.localStorage.getItem('staffId') ;
-          console.log(current_cookie[1]); 
+          //console.log(current_cookie[1]); 
           var obj={
               firstname:firstName,
               lastname:lastName,
@@ -530,7 +530,7 @@ function makeSale(){
 let formCounter = 0;
 //function to get all products  
 $(document).ready(function(){
-    if(window.location.pathname!='/web/productManage.html'){return false}
+    if(window.location.pathname!='/Web/productManage.html'){return false}
     $("#productsList").ready(function(){
         
         $.ajax({
@@ -540,6 +540,7 @@ $(document).ready(function(){
           })
             .done(
                 function(msg) {
+                    console.log(msg)
                     let row = document.getElementById('productsList');
                 for(let i=0; i<msg.length; i++){
                     let column = document.createElement('div');

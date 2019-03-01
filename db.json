@@ -12,8 +12,17 @@
       "gender": "Male",
       "email": "samfeolu@gmail.com",
       "phone": "08066069526",
-      "id": "2",
-      "addedBy": "1"
+      "addedBy": "2",
+      "id": 1
+    },
+    {
+      "firstname": "Samuel",
+      "lastname": "Jim Dead",
+      "gender": "Male",
+      "email": "jinnamdi@gmail.com",
+      "phone": "08069026578",
+      "addedBy": "1",
+      "id": 3
     }
   ],
   "staff": [
@@ -34,14 +43,50 @@
       "phone": "08066069526",
       "password": "default",
       "id": "2"
+    },
+    {
+      "firstname": "Adedayo",
+      "lastname": "Robert",
+      "gender": "Male",
+      "email": "techkny@gmail.com",
+      "phone": "08139310573",
+      "password": "123456789",
+      "id": "vgAD3A2"
+    },
+    {
+      "firstname": "Austine",
+      "lastname": "ggggg",
+      "gender": "Male",
+      "email": "austine@gmail.com",
+      "phone": "09099956547",
+      "password": "1234",
+      "id": "MFDYCrR"
+    },
+    {
+      "firstname": "Samuel",
+      "lastname": "Robert",
+      "gender": "Male",
+      "email": "techkny@gmail.com",
+      "phone": "09066069526",
+      "password": "123456",
+      "id": "prpgJuh"
+    },
+    {
+      "firstname": "Samuel",
+      "lastname": "Robert",
+      "gender": "Male",
+      "email": "techkny@gmail.com",
+      "phone": "09066069526",
+      "password": "123456",
+      "id": "QHyfZZb"
     }
   ],
   "product": [
     {
       "name": "Iphone 4",
-      "quantity": "6",
+      "quantity": "77",
       "costPrice": "50000",
-      "sellingPrice": "70000",
+      "sellingPrice": "50000",
       "id": 4
     },
     {
@@ -52,11 +97,18 @@
       "id": 5
     },
     {
-      "name": "Tecno",
-      "quantity": "19858",
-      "costPrice": "15000",
-      "sellingPrice": "15005",
-      "id": 6
+      "name": "Bibles",
+      "quantity": "999",
+      "costPrice": "2500",
+      "sellingPrice": "1500",
+      "id": 7
+    },
+    {
+      "name": "Infinix Hot",
+      "quantity": "52",
+      "costPrice": "511",
+      "sellingPrice": "452541",
+      "id": 8
     }
   ],
   "sales": [
@@ -141,6 +193,68 @@
       "time": "2019-02-28T17:17:02.835Z",
       "soldBy": "2",
       "boughtBy": "53542"
+    },
+    {
+      "item": {
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "6500000",
+          "quantity": "26"
+        },
+        "Tecno": {
+          "name": "Tecno",
+          "price": "180060",
+          "quantity": "12"
+        }
+      },
+      "grandPrice": "6680060",
+      "id": "123456/1551461046853/2019/2/1/2",
+      "time": "2019-03-01T17:24:06.853Z",
+      "soldBy": "2",
+      "boughtBy": "123456"
+    },
+    {
+      "item": {
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "1250000",
+          "quantity": "5"
+        },
+        "Tecno": {
+          "name": "Tecno",
+          "price": "7277425",
+          "quantity": "485"
+        }
+      },
+      "grandPrice": "8527425",
+      "id": "4/1551461100257/2019/2/1/2",
+      "time": "2019-03-01T17:25:00.257Z",
+      "soldBy": "2",
+      "boughtBy": "4"
+    },
+    {
+      "item": {
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "113750000",
+          "quantity": "455"
+        },
+        "Iphone 4": {
+          "name": "Iphone 4",
+          "price": "5460000",
+          "quantity": "78"
+        },
+        "Infinix Hot": {
+          "name": "Infinix Hot",
+          "price": "40276149",
+          "quantity": "89"
+        }
+      },
+      "grandPrice": "159486149",
+      "id": "113027087/1551476025768/2019/2/1/1",
+      "time": "2019-03-01T21:33:45.768Z",
+      "soldBy": "1",
+      "boughtBy": "113027087"
     }
   ]
 }
