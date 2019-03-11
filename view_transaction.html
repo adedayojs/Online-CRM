@@ -5,8 +5,17 @@
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <meta http-equiv="X-UA-Compatible" content="ie=edge">
          <title>Lawgrotto CRM</title>
+         <link rel="stylesheet" href="style.css"/>
          <link rel="stylesheet" href="http://localhost:5500/web/sstyle.css"/>
          <link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
+         <script>
+          let adminId = window.localStorage.getItem('adminId');
+          if(!(adminId)){
+            window.localStorage.setItem('url',window.location.href)
+            alert('Please Login');
+            window.location.href = 'admin_login.html';
+          }
+      </script>
          
         <style type="text/css">
         #table {width:90%;margin: auto;text-align: center;font-weight: lighter;font-family: Georgia, 'Times New Roman', Times, serif;margin-top:5% }
@@ -33,13 +42,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav m-auto">
                         <li class="nav-item pl-5">
-                          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="admin.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item pl-5">
                           <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item pl-5">
-                          <a class="nav-link" href="login.html">Login</a>
+                          <a class="nav-link" href="logout.html">Logout</a>
                           </li>
                         <li class="nav-item pl-5">
                           <a class="nav-link" href="faq.html">FAQ</a>
@@ -53,7 +62,7 @@
                   </nav>
         
     </header>
-    <div id="view_transaction_div">
+    <div id="view_transaction_div" >
             <table id="table">
                 <tr>
                     <td>S/N</td>

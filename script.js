@@ -1,24 +1,3 @@
-$(document).ready(
-    $("#registrationForm").submit(function(event){
-        event.preventDefault();
-        
-        if ( $("#username").val()) {
-
-            $.ajax({
-              method: "POST",
-              url: `http://localhost:3000/Personal/AR6hDbT`,
-              
-            })
-            .done(function(res){
-                alert("Deleted");
-            })
-        
-    }
-}
-    )
-)
-
-
 //  Staff Login Validation Script
 
 $(document).ready(
@@ -209,26 +188,25 @@ $(document).ready(
                     let url = window.localStorage.getItem('url')
                     if(url){
                         alert('Welcome Admin');
-                    //console.log(res)
                     window.localStorage.clear()
                     window.localStorage.setItem('adminId', `${res[0].id}`);
                     window.location.href = url
                     }
                     else if(!url){
                     alert('Welcome Admin');
-                    //console.log(res)
                     window.localStorage.clear()
                     window.localStorage.setItem('adminId', `${res[0].id}`)
 
                     window.location="admin.html";}
                 }
-                    //else{alert('There is a problem')}
-                
-               //alert(`Our Staff FirstName is ${res[0].firstname} Our Staff Lastname is ${res[0].lastname}  `);
-               
-            })
+                   
+            }).fail(function(msg){
+                console.log(Object.getOwnPropertyNames(msg))
+                    alert('Could Not Connect To Server');
+            });
         
     }
+    else{alert('Please Input Admin ID and Password');}
 }
     )
 
@@ -263,7 +241,7 @@ $(document).ready(function(){
               })
                 .done(function( msg ) {
                   //console.log(msg);
-                  alert( "Staff successfully added" );
+                  alert( "Customer successfully added" );
                   location.reload();
                 });
             
@@ -530,7 +508,7 @@ function makeSale(){
 let formCounter = 0;
 //function to get all products  
 $(document).ready(function(){
-    if(window.location.pathname!='/Web/productManage.html'){return false}
+    if(!$("#productsList").val()){return false}
     $("#productsList").ready(function(){
         
         $.ajax({
@@ -620,7 +598,7 @@ function updateProduct(index){
         }
     ).fail(
         function(err){
-            alert('Something I Wrong');
+            alert('Something Is Wrong');
             console.log(err);
         }
     )
