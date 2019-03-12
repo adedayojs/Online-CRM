@@ -1,88 +1,92 @@
 body{
-    background-color: lavenderblush !important;
-   
-    animation-duration: 5s;
-    animation-name: fadein;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: cover;
+    background-color: rgba(198, 221, 230, 0.664) !important;
+    display:none;
 }
-@keyframes fadein {
-    from {
-        display: none;    }
-  
-    to {
-        display: visible;    }
-  }
-body .row{
-    margin:1em auto;
+body p{
+    color: #fff;
 }
-a:hover{
-    opacity: 0.5;
-    animation-direction: alternate;
+body .container-fluid a:hover{
+    text-decoration-line: none;
+    
+}
+.headerPix{
+    background-color: red;
+    background-image: url('./img/crm.jpeg');
+    background-size: cover;
+    height: -webkit-fill-available;
+    opacity: 1;
+    max-height: 400px;
+    
+}
+.border-groove{
+    border-style: ridge;
+    border-width: 10px;
+    width:100%;
+    height:100%;
+    border-radius: 10% !important;
+}
+.centralize{
+    margin: auto;
+    opacity: 1;
+}
+.round{
+    border-radius: 100%;
+    height: 10em;
+    width: 10em;
+    text-align: center;
+    
 }
 header, footer {
-    background-color: black;
-}
-header ul {
-    list-style-type: none;
-    display: inline-block;
-    overflow: hidden;
+    background-color: rgb(8, 5, 5);
 }
 
-ul li a, .white {
+.white {
     color: #fff !important;
-
 }
-ul li a:hover, ul li:hover{
+.nav-link {
+    color: white !important;
+}
+ul a:hover{
     
     animation-name: change;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
     animation-direction: alternate;
 } 
 @keyframes change {
     from {
-        color: #fff !important;
+        
     }
-  
     to {
-        background-color: blue;
-        color: black !important;
+        background-color: lightgray;
+        
     }
 }
-a {
-    text-decoration-line:none;
-
-}
-a:hover {
-    text-decoration-line:none !important;
-    animation-name: change;
-    animation-duration: 2s;
-} 
-@keyframes change {
-    from {
-        color: #fff !important;
-    }
-  
-    to {
-        background-color: white;
-        color: black !important;
-    }
-}
-
 #load{
     height: 2em;
     visibility: hidden;
 }
 #show{
     height: 2em;
-    
 }
 .itemName, .itemSinglePrice, .itemQuantity, .itemPrice {
     border: none;
 }
 .productForms {
-    padding:1%;
+    padding:3%;
+}
+.productForms input[type=button]{
+    margin:0.3em!important;
+    padding: 1%
+}
+.productForms small{
+    margin:auto!important;
+    padding: auto
 }
 h3.bg-light.text-center {
     color: black;
-    background-color: grey !important;
 }
+/*8*********************/ 

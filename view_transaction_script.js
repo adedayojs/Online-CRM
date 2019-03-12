@@ -1,3 +1,8 @@
+// Fade In
+$(document).ready(function(){
+  $('body').fadeIn(2000);
+});
+
 //function to view staff
 var paginate=1;
 $(document).ready(function(){

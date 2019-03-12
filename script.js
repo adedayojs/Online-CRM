@@ -1,3 +1,9 @@
+// Fade In
+$(document).ready(function(){
+    $('body').fadeIn(2000);
+});
+
+
 //  Staff Login Validation Script
 
 $(document).ready(
@@ -221,6 +227,7 @@ $(document).ready(function(){
           var lastName=$("#lastname").val();
           var Gender=$("#gender").val();
           var emailAddress=$("#email").val();
+          let id = new Date().getTime()
           var phoneNumber=$("#phone").val();
           var staffId = window.localStorage.getItem('staffId') ;
           //console.log(current_cookie[1]); 
@@ -230,7 +237,8 @@ $(document).ready(function(){
               gender:Gender,
               email:emailAddress,
               phone:phoneNumber,
-              addedBy:staffId
+              addedBy:staffId,
+              id: id
                 
             }
           //console.log(obj);
@@ -242,6 +250,7 @@ $(document).ready(function(){
                 .done(function( msg ) {
                   //console.log(msg);
                   alert( "Customer successfully added" );
+                  alert('Your Id is '+ id)
                   location.reload();
                 });
             
@@ -258,6 +267,7 @@ $(document).ready(function(){
       var Gender=$("#gender").val();
       var emailAddress=$("#email").val();
       var phoneNumber=$("#phone").val();
+      let id = $("#id").val();
       var defaultPassword=$("#defaultPassword").val();
       var confirmDefault=$("#confirmDefault").val();
       var obj={
@@ -266,7 +276,8 @@ $(document).ready(function(){
           gender:Gender,
           email:emailAddress,
           phone:phoneNumber,
-          password:defaultPassword
+          password:defaultPassword,
+          id:id
       }
       //console.log(obj);
         $.ajax({
@@ -342,6 +353,38 @@ function query_suggestion(){
         });
 }
 
+
+//  Search For Possible matches in the Customer databasse
+function getCustomer(){
+    let suggest=document.getElementById('customerId').value;
+    let return_option='';
+    //alert(suggest);
+    $.ajax({
+        method: "GET",
+        url: `http://localhost:3000/user?q=${suggest}`
+        
+      })
+        .done(function( msg ) {
+            console.log(msg);
+          for (let a=0;a<msg.length;a++){
+              let opt="<option onclick=\"innerT()\">"+msg[a].id+"</option>";
+              console.log(opt);
+              return_option+=opt;
+          }
+          document.getElementById('customerSuggestionDiv').style.display="block";
+          document.getElementById('customerSuggestionDiv').innerHTML=return_option;
+           // console.log(msg.length);
+          //alert( msg.name);
+         // location.reload();
+        });
+}
+function innerT(textt){
+    //var a=this.innerText;
+    var a =document.getElementById('customerSuggestionDiv').value;
+    document.getElementById('customerId').value=a;
+    document.getElementById('customerSuggestionDiv').style.display="none";
+    
+}
 
 
 function getInnerText(textt){
@@ -508,7 +551,7 @@ function makeSale(){
 let formCounter = 0;
 //function to get all products  
 $(document).ready(function(){
-    if(!$("#productsList").val()){return false}
+    if($("#productsList").val() !== ""){return false}
     $("#productsList").ready(function(){
         
         $.ajax({
@@ -522,26 +565,25 @@ $(document).ready(function(){
                     let row = document.getElementById('productsList');
                 for(let i=0; i<msg.length; i++){
                     let column = document.createElement('div');
-                    column.setAttribute('class','col-sm-3')
+                    column.setAttribute('class','col-sm-6');
+                    column.setAttribute('class','col-md-3');
                     column.innerHTML = `
-                    <form class="productForms border border-dark rounded" id="${formCounter}">
+                    <form class=" productForms bg-light border border-light shadow-lg rounded" id="${formCounter}">
                         <div class="form-group">
-                          <label>Name</label>
-                          <input type="text" class="form-control productName" value="${msg[i].name}" readonly>
+                          <label class="text-uppercase h6">Name</label>
+                          <input type="text" class="form-control productName input-small" value="${msg[i].name}" readonly>
                         </div>
                         <div class="form-group">
-                          <label>Quantity</label>
-                          <input type="number" class="form-control productQuantity" value="${msg[i].quantity}" disabled="false" >
+                          <label class="text-uppercase h6">Quantity</label>
+                          <input type="number" class="form-control productQuantity input-small" value="${msg[i].quantity}" disabled="false" >
                         </div>
                         <div class="form-group">
-                          <label>Selling Price</label>
-                          <input type="number" class="form-control productPrice" value="${msg[i].sellingPrice}" disabled>
+                          <label class="text-uppercase h6">Selling Price</label>
+                          <input type="number" class="form-control productPrice input-small" value="${msg[i].sellingPrice}" disabled>
                         </div>
                         <small>
                         <input type="hidden" class="productId" value="${msg[i].id}"/>
-                        <input type="checkbox" class="checked" onchange="allowEdit(${formCounter})"/> <label class="p-auto">Allow Edit</label>
-                        
-                        
+                        <input type="checkbox" class="checked" onchange="allowEdit(${formCounter})"/> <label class="p-auto">Edit</label>
                         <input onclick="updateProduct(${formCounter})" type="button" value='Update' class="btn btn-success m-auto" />
                         <input onclick="deleteProduct(${formCounter})" type="button" value='Delete' class="btn btn-danger m-auto" />
                         </small>
@@ -582,6 +624,7 @@ function updateProduct(index){
     let productPrice = form.getElementsByClassName('productPrice')[0].value;
     let productId = form.getElementsByClassName('productId')[0].value;
     let decision = confirm('Are You Sure You want to update?');
+    console.log(decision)
     if (!decision){return decision}
     $.ajax({
         method:"PATCH",

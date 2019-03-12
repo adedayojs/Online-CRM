@@ -32,6 +32,15 @@
       "phone": "08140104197",
       "addedBy": "1",
       "id": 4
+    },
+    {
+      "firstname": "Kingsley",
+      "lastname": "Compiler",
+      "gender": "Male",
+      "email": "decagon@decadev.institute",
+      "phone": "02456987453",
+      "addedBy": "2",
+      "id": "1552315437277"
     }
   ],
   "staff": [
@@ -54,24 +63,6 @@
       "id": "2"
     },
     {
-      "firstname": "Adedayo",
-      "lastname": "Robert",
-      "gender": "Male",
-      "email": "techkny@gmail.com",
-      "phone": "08139310573",
-      "password": "123456789",
-      "id": "vgAD3A2"
-    },
-    {
-      "firstname": "Austine",
-      "lastname": "ggggg",
-      "gender": "Male",
-      "email": "austine@gmail.com",
-      "phone": "09099956547",
-      "password": "1234",
-      "id": "MFDYCrR"
-    },
-    {
       "firstname": "Samuel",
       "lastname": "Robert",
       "gender": "Male",
@@ -88,12 +79,39 @@
       "phone": "09066069526",
       "password": "123456",
       "id": "QHyfZZb"
+    },
+    {
+      "firstname": "Decagon",
+      "lastname": "Staff",
+      "gender": "Male",
+      "email": "decagon@staff.com",
+      "phone": "08139310525",
+      "password": "staff",
+      "id": "123456"
+    },
+    {
+      "firstname": "Adedayo",
+      "lastname": "Jim Dead",
+      "gender": "Male",
+      "email": "techkny@gmail.com",
+      "phone": "09066069526",
+      "password": "11",
+      "id": "1234567"
+    },
+    {
+      "firstname": "Decagon",
+      "lastname": "Decadev",
+      "gender": "Male",
+      "email": "decagon@decadev.institute",
+      "phone": "08066063948",
+      "password": "123456789",
+      "id": "767112"
     }
   ],
   "product": [
     {
       "name": "Iphone 4",
-      "quantity": "77",
+      "quantity": "8",
       "costPrice": "50000",
       "sellingPrice": "50000",
       "id": 4
@@ -118,6 +136,13 @@
       "costPrice": "511",
       "sellingPrice": "452541",
       "id": 8
+    },
+    {
+      "name": "Christian Women Mirror",
+      "quantity": "997",
+      "costPrice": "120",
+      "sellingPrice": "150",
+      "id": 9
     }
   ],
   "sales": [
@@ -264,6 +289,44 @@
       "time": "2019-03-01T21:33:45.768Z",
       "soldBy": "1",
       "boughtBy": "113027087"
+    },
+    {
+      "item": {
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "9250000",
+          "quantity": "37"
+        },
+        "Christian Women Mirror": {
+          "name": "Christian Women Mirror",
+          "price": "4650",
+          "quantity": "31"
+        }
+      },
+      "grandPrice": "9254650",
+      "id": "1552309240080/1552315584701/2019/2/11/2",
+      "time": "2019-03-11T14:46:24.701Z",
+      "soldBy": "2",
+      "boughtBy": "1552309240080"
+    },
+    {
+      "item": {
+        "Samsung Galaxy Edge 7": {
+          "name": "Samsung Galaxy Edge 7",
+          "price": "1250000",
+          "quantity": "5"
+        },
+        "Christian Women Mirror": {
+          "name": "Christian Women Mirror",
+          "price": "300",
+          "quantity": "2"
+        }
+      },
+      "grandPrice": "1250300",
+      "id": "1552315437277/1552336646843/2019/2/11/1",
+      "time": "2019-03-11T20:37:26.843Z",
+      "soldBy": "1",
+      "boughtBy": "1552315437277"
     }
   ]
 }

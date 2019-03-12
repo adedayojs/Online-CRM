@@ -1,3 +1,8 @@
+// Fade In
+$(document).ready(function(){
+  $('body').fadeIn(2000);
+});
+
 //function to get all user  
 $(document).ready(function(){
   $("#view_user_body").ready(function(e){
@@ -141,7 +146,7 @@ $.ajax({
       let a="<table id=\"update_table\">"+
       "<tr><td>Id</td><td>Names</td><td>View</td><td>Delete</td></tr>";
       for(var b=0;b<msg.length;b++){
-        a+="<tr><td>" +msg[b].id+ "</td><td>"+msg[b].firstname+" "+msg[b].lastname+"</td><td><button onclick=\"view_staff_details("+b+")\">View</button> </td><td><button onclick=\"perform_staff_deletion("+b+")\">Delete</button></td></tr><input type=\"hidden\" class=\"hidden_value\" value=\""+msg[b].id+"\">";
+        a+="<tr><td>" +msg[b].id+ "</td><td>"+msg[b].firstname+" "+msg[b].lastname+"</td><td><button class =\"btn btn-success\" onclick=\"view_staff_details("+b+")\">View</button> </td><td><button class =\"btn btn-danger\"onclick=\"perform_staff_deletion("+b+")\">Delete</button></td></tr><input type=\"hidden\" class=\"hidden_value\" value=\""+msg[b].id+"\">";
   //    console.log(a);
       }
       a+="</table>";
